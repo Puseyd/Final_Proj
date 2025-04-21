@@ -19,17 +19,8 @@ class Cell:
         self.sketched = value
 
     def draw(self):
-        if self.value != 0:
-            text_surface = self.font.render(str(self.value), True, (0, 0, 0))
-            x = self.col * self.cell_width + self.cell_width / 2
-            y = self.row * self.cell_height + self.cell_height / 2
-            text_rect = text_surface.get_rect(center=(x, y))
-            self.screen.blit(text_surface, text_rect)
-
-        if self.selected:
-            pygame.draw.rect(
-                self.screen, (255, 0, 0),
-                (self.col * self.cell_width, self.row * self.cell_height,
-                 self.cell_width, self.cell_height), 3
-            )
-
+        text_surface = self.font.render(str(self.value), True, (0, 0, 0))
+        x_cord = self.col * self.cell_width + self.cell_width / 2
+        y_cord = self.row * self.cell_height + self.cell_height / 2
+        text_rect = text_surface.get_rect(center=(x_cord, y_cord))
+        self.screen.blit(text_surface, text_rect)
