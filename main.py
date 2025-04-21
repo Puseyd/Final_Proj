@@ -8,7 +8,7 @@ def main():
     pygame.display.set_caption("Sudoku")
     running = True
 
-    board = Board(width, height, screen, difficulty=30)  # 可以调整 30 为更难或更简单
+    board = Board(width, height, screen, difficulty=30)
 
     clock = pygame.time.Clock()
 
