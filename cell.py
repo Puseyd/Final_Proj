@@ -4,7 +4,7 @@ class Cell:
     def __init__(self, width, height, screen, value, row, col):
         self.cell_width = width / 9
         self.cell_height = height / 9
-        self.font = pygame.font.SysFont("timesnewroman", int(min(self.cell_width, self.cell_height) * .7))
+        self.font = pygame.font.SysFont("timesnewroman", int(min(self.cell_width, self.cell_height) * 0.7))
         self.value = value
         self.row = row
         self.col = col
@@ -25,5 +25,11 @@ class Cell:
             y = self.row * self.cell_height + self.cell_height / 2
             text_rect = text_surface.get_rect(center=(x, y))
             self.screen.blit(text_surface, text_rect)
+
         if self.selected:
-            pygame.draw.rect(self.screen, "RED", (self.col * self.cell_width, self.row * self.cell_height, self.cell_width, self.cell_height), 3)
+            pygame.draw.rect(
+                self.screen, (255, 0, 0),
+                (self.col * self.cell_width, self.row * self.cell_height,
+                 self.cell_width, self.cell_height), 3
+            )
+
