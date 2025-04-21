@@ -3,25 +3,19 @@ from board import Board
 
 def main():
     pygame.init()
-    width, height = 600, 600
-    screen = pygame.display.set_mode((width, height))
+    screen = pygame.display.set_mode((600, 600))
     pygame.display.set_caption("Sudoku")
+    board = Board(600, 600, screen, "easy")
+
     running = True
-
-    board = Board(width, height, screen, difficulty=30)
-
-    clock = pygame.time.Clock()
-
     while running:
         screen.fill("white")
         board.draw()
+        pygame.display.update()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
-        pygame.display.flip()
-        clock.tick(60)
 
     pygame.quit()
 
