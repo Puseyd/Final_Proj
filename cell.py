@@ -11,13 +11,19 @@ class Cell:
         self.screen = screen
         self.sketched = None
         self.selected = False
+
     def set_cell_value(self, value):
         self.value = value
+
     def set_sketched_value(self, value):
         self.sketched = value
+
     def draw(self):
-        text_surface = self.font.render(str(self.value), True, (0,0,0))
-        x_cord = self.col*self.cell_width + (self.cell_width / 2)
-        y_cord = self.row*self.cell_height + (self.cell_height / 2)
-        text_rect = text_surface.get_rect(center=((x_cord, y_cord)))
-        self.screen.blit(text_surface, text_rect)
+        if self.value != 0:
+            text_surface = self.font.render(str(self.value), True, (0, 0, 0))
+            x = self.col * self.cell_width + self.cell_width / 2
+            y = self.row * self.cell_height + self.cell_height / 2
+            text_rect = text_surface.get_rect(center=(x, y))
+            self.screen.blit(text_surface, text_rect)
+        if self.selected:
+            pygame.draw.rect(self.screen, "RED", (self.col * self.cell_width, self.row * self.cell_height, self.cell_width, self.cell_height), 3)
