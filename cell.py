@@ -1,0 +1,38 @@
+import pygame
+
+class Cell:
+    def __init__(self, width, height, screen, value, row, col):
+        self.cell_width = width / 9
+        self.cell_height = height / 9
+        self.font = pygame.font.SysFont("timesnewroman", int(min(self.cell_width, self.cell_height) * 0.7))
+        self.sketch_font = pygame.font.SysFont("timesnewroman", int(min(self.cell_width, self.cell_height) * 0.5))
+        self.value = value
+        self.row = row
+        self.col = col
+        self.screen = screen
+        self.sketched = None
+        self.selected = False
+
+    def set_cell_value(self, value):
+        self.value = value
+
+    def set_sketched_value(self, value):
+        self.sketched = value
+
+    def draw(self):
+        if self.selected:
+            pygame.draw.rect(self.screen, "light blue",(self.col * self.cell_width, self.row * self.cell_height, self.cell_width, self.cell_height))
+
+        if self.sketched and self.value == 0:
+            text_surface = self.sketch_font.render(str(self.sketched), True, "grey")
+            x_cord = self.col * self.cell_width + self.cell_width / 2
+            y_cord = self.row * self.cell_height + self.cell_height / 2
+            text_rect = text_surface.get_rect(center=(x_cord, y_cord))
+            self.screen.blit(text_surface, text_rect)
+        elif self.value != 0:
+            text_surface = self.font.render(str(self.value), True, "black")
+            x_cord = self.col * self.cell_width + self.cell_width / 2
+            y_cord = self.row * self.cell_height + self.cell_height / 2
+            text_rect = text_surface.get_rect(center=(x_cord, y_cord))
+            self.screen.blit(text_surface, text_rect)
+
