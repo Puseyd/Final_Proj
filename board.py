@@ -2,7 +2,7 @@ import pygame
 from cell import Cell
 from sudoku_generator import generate_sudoku
 
-class board:
+class Board:
     def __init__(self, width, height, screen, difficulty):
         #intialize variables
         self.width = width
