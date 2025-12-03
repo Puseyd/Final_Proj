@@ -35,7 +35,9 @@ def start_menu():
     while run:
         WIN.fill((255, 255, 255))
         title = FONT.render("Select Difficulty", True, (0, 0, 0))
-        WIN.blit(title, (120, 100))
+        welcome = FONT.render("Welcome to Sudoku!", True, (0,0,0))
+        WIN.blit(welcome, (125,50))
+        WIN.blit(title, (155, 115))
 
         easy.draw()
         medium.draw()
@@ -66,7 +68,8 @@ def end_screen(message):
     while run:
         WIN.fill((255, 255, 255))
         msg = FONT.render(message, True, (0, 0, 0))
-        WIN.blit(msg, (120, 200))
+        WIN.blit(msg, (175, 200))
+
 
         restart.draw()
         exit_btn.draw()
