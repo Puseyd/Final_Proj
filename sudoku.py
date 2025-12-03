@@ -1,4 +1,4 @@
-# Import pygame and the Board class to run the Sudoku game
+#Sudoku inherits Board. Board inherits cell.
 import pygame
 from board import Board
 pygame.init()
@@ -142,7 +142,7 @@ def main():
 
             if event.type == pygame.KEYDOWN:
                 if board.selected:
-                    # Type numbers 1–9 to sketch them into the selected cell
+
                     if event.key == pygame.K_1:
                         board.sketch(1)
                     if event.key == pygame.K_2:
@@ -161,19 +161,20 @@ def main():
                         board.sketch(8)
                     if event.key == pygame.K_9:
                         board.sketch(9)
-                    # Press Enter to place the sketched number permanently
+
                     if event.key == pygame.K_RETURN:
                         row, col = board.selected
                         value = board.cells[row][col].sketched_value
                         board.place_number(value)
 
-                    # Press Backspace to clear selected cell (if it is not a preset clue)
+
                     if event.key == pygame.K_BACKSPACE:
                         board.clear()
 
     pygame.quit()
 
-main()
+if __name__ == "__main__":
+    main()
 
 
 
